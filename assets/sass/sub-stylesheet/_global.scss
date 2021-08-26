@@ -1,0 +1,435 @@
+/*!
+<----------------------------------------
+  Theme Name: Agilibo.
+  Theme URI: https://www.archibo.de/.
+  Author: archibo.
+  Author URI: https://www.archibo.de/.
+  Description: Agilibo is a Creative HTML5 Template for Saas, Startup & any ytpe of confarence.
+  Version: 1.0.0
+  Tags: app, Agilibo E-ccomerce, app landing page, app showcase template, application services, gradient color, landing, marketing, responsive template, seo, software, Software Services, startup, tech, web application landing page.
+---------------------------------------->
+*/
+/*
+>>> TABLE OF CONTENTS:
+<----------------------------------------------------------------
+  01. Default CSS
+  02. Global css
+  03. Header
+  04. sidebar menu
+  05. About
+  07. Roadmap
+  08. News
+  09. Team
+  10. Contact
+---------------------------------------------------------------->
+
+
+/*--------------------------------------------------------------
+Typography
+--------------------------------------------------------------*/
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+}
+body {
+    position: relative;
+    &::after {
+        position: absolute;
+        content: "";
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        height: 100%;
+        width: 100%;
+        background-position: top right;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: url(../../assets/images/banner/page-bg.webp);
+        @include breakpoint (max-md) {
+            height: 529px;
+            object-fit: cover; 
+            object-position: 50% 0%; 
+            background-position: top;
+        }
+    }
+}
+body,
+button,
+input,
+select,
+textarea {
+	color: $desc-color;
+	font-family: $Minionpro_reg;
+	font-size: 1rem;
+	font-weight: 400;
+	outline: none;
+    border: none;
+    input::-webkit-inner-spin-button, 
+    input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
+}
+
+
+h1 {
+	font-size: $fs-h2;
+}
+h2 {
+	font-size: $fs-h2;
+}
+h3 {
+	font-size: $fs-h3;
+}
+h4 {
+	font-size: $fs-h4;
+}
+h5 {
+ 	font-size: $fs-h5;
+}
+h6 {
+	font-size: $fs-h6;
+}
+h1, h2, h3, h4, h5, h6 {
+	color: $title-color;
+	font-weight: 700;
+	font-family: $Minionpro_reg;
+    line-height: 1.5;
+    text-transform: capitalize;
+}
+h1>a, h2>a, h3>a, h4>a, h5>a, h6>a {
+	color: inherit;
+	font-size: inherit;
+	font-weight: 700;
+	font-family: $Minionpro_reg;
+}
+
+@media screen and (min-width: 576px) {
+	h1 {
+	    font-size: $fs-h1;
+	}
+	h2 {
+	    font-size: $fs-h2;
+	}
+	h3 {
+	    font-size: $fs-h3;
+	}
+	h4 {
+	    font-size: $fs-h4;
+	}
+	h5 {
+	    font-size: $fs-h5;
+	}
+	h6 {
+	    font-size: $fs-h6;
+	}
+}
+
+p {
+	font-size: $fs-small-x;
+	margin: 0 0 15px;
+	color: $title-color;
+	line-height: 1.5;
+	font-family: $Minionpro_reg;
+}
+
+span {
+    font-family: $Minionpro_reg;
+    font-size: $fs-small-x;
+}
+
+a {
+	color: $desc-color;
+	text-decoration: none;
+	display: inline-block;
+    outline: none;
+    font-family: $Minionpro_reg;
+    @include transition($transition);
+    &:hover {
+        text-decoration: none;
+    }
+}
+a:focus {
+	outline: none;
+}
+a:hover,
+a:active {
+	color: #000;
+	outline: 0;
+}
+img,
+video {
+	height: auto;
+	max-width: 100%;
+	@include transition($transition);
+}
+
+
+/*======= all custom btn css =======*/
+button.btn {
+    display: inline-table;
+}
+.btn{
+    font-size: 14px;
+    padding: 5px 20px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    display: inline-flex;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 25px;
+    position: relative;
+    background: $theme-color;
+    border: 1px solid $theme-color;
+    transition: all 0.3s ease-in-out;
+    &:focus {
+        box-shadow: none;
+    }
+    &:hover {
+        background: $white-color;
+        span, i {
+            color: $theme-color;
+        }
+    }
+    i {
+        color: $white-color;
+    }
+    span {
+        font-size: 13px;
+        color: $white-color;
+    }
+    .btn-ripple{
+        background: rgba(48, 250, 206, 0.3);
+        position: absolute;
+        border-radius: 100%;
+        animation: ripple 1s;
+        transform: scale(0);
+    }
+}
+.btn-outline {
+    background: transparent;
+    border: 1px solid $white-color;
+}
+/*======= all custom btn css =======*/
+
+//?======= all keyframes css start =====?//
+@keyframes ripple {
+    100%{
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
+//?======= all keyframes css ends  =====?//
+
+
+//*==== section padding ====*//
+.padding-tb {
+    padding: 60px 0;
+    position: relative;
+    @include breakpoint (md) {
+        padding: $common-padding;
+    }
+}
+//*==== section padding ====*//
+
+//#==== form css start ====#//
+form {
+    .input-group {
+        position: relative;
+        input {
+            border-radius: 3px!important;
+            &.form-control {
+                width: 100%;
+                height: 40px;
+                font-size: 14px;
+                margin-left: 0!important;
+                border: 1px solid $theme-color;
+                background: transparent;
+                transition: all 0.3s ease-in-out;
+                &::placeholder {
+                    font-size: 12px;
+                    color: silver;
+                    transition: all 0.3s ease-in-out;
+                }
+                &:focus {
+                    border: 1px solid #000;
+                    box-shadow: none;
+                    &::placeholder {
+                        color: #000;
+                        padding-left: 5px;
+                    }
+                    ~ i {
+                        color: #000;
+                        svg {
+                            g {
+                            path {
+                                fill: #000;
+                            }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        i {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            color: $theme-color;
+            z-index: 9;
+            transform: translateY(-50%);
+            &.view_pass {
+                left: auto;
+                right: 10px;
+                cursor: pointer;
+            }
+        }
+        label {  
+            color: #000;
+            font-size: 14px;
+        }
+        textarea {
+            padding: 10px;
+            width: 100%;
+            font-size: 12px;
+            height: 100px !important;
+            border: 1px solid $theme-color;
+            border-radius: 3px;
+            background: transparent;
+            transition: all 0.3s ease-in-out;
+            &::placeholder {
+                color: $theme-color;
+                font-size: 14px;
+                transition: all 0.3s ease-in-out;
+            }
+            &:focus {
+                box-shadow: none;
+                border-color: #000;
+                &::placeholder {
+                    color: #000;
+                    padding-left: 5px;
+                }
+            }
+        }
+    }
+    .input-sellect {
+        label {
+            display: block;
+        }
+        select {
+            height: 40px;
+            padding: 10px;
+            width: 100%;
+            border-radius: 3px;
+            border: 1px solid $theme-color;
+        }
+    }
+    button {
+        &.custom-btn {
+            margin-top: 20px;
+        }
+    }
+}
+.input-group  > input:not(:placeholder-shown) ~ label {
+    top: -12px;
+    left: 10px;
+    opacity: 1;
+    padding: 5px;
+}
+//#==== form css end ====#//
+
+/*======= all scrollbar css =====*/
+::-webkit-scrollbar-track {
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+::-webkit-scrollbar {
+    width: 5px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: $theme-color;
+    border-radius: 5px;
+}
+
+//? component //?
+
+%flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+%absolute {
+    position: absolute;
+    content: '';
+}
+
+
+%shadow {
+    box-shadow: 0 5px 10px 0 rgba(55, 70, 66, 0.12);
+}
+
+%border {
+    border: 10px solid #ed4a4382;
+}
+
+%widget-mt {
+    margin-top: 35px;
+}
+
+%widget-pad {
+    padding: 20px 20px 30px;
+}
+
+//? component //?
+
+//? all social media ends 
+
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes preloader-fx {
+    0% {
+        -webkit-transform: scale(0, 0);
+        transform: scale(0, 0);
+        opacity: 0.5;
+    }
+
+    100% {
+        -webkit-transform: scale(1, 1);
+        transform: scale(1, 1);
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes preloader-fx {
+    0% {
+        -webkit-transform: scale(0, 0);
+        opacity: 0.5;
+    }
+
+    100% {
+        -webkit-transform: scale(1, 1);
+        opacity: 0;
+    }
+}
+
+
+@keyframes collection{
+    0%{opacity:1}
+    40%{opacity:1}
+    100%{width:200%;height:200%;opacity:0}
+}
+
+
+
+
+
+
+
