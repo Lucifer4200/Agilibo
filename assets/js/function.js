@@ -34,39 +34,7 @@
         $('body,.overlay,.side-hamburger,.sidebar-menu').removeClass('active');
     });
 
-    // menu icon-related
-    $(".list-item>li>.sub-menu").parent("li").children("a").addClass("icon-down");
-
-    //mobile drodown menu display
-	$('ul.menu-list li a').on('click', function(e) {
-        var element = $(this).parent('li');
-        if (element.hasClass('open')) {
-            element.removeClass('open');
-            element.find('li').removeClass('open');
-            element.find('ul').slideUp(500,"swing");
-        }
-        else {
-            element.addClass('open');
-            element.children('ul').slideDown(500,"swing");
-            element.siblings('li').children('ul').slideUp(500,"swing");
-            element.siblings('li').removeClass('open');
-            element.siblings('li').find('li').removeClass('open');
-            element.siblings('li').find('ul').slideUp(500,"swing");
-        }
-	}); 
-
-
-    // drop down menu width overflow problem fix
-    $('ul').parent().on('hover', function() {
-        var menu = $(this).find("ul");
-        var menupos = $(menu).offset();
-        if (menupos.left + menu.width() > $(window).width()) {
-            var newpos = -$(menu).width();
-            menu.css({ left: newpos });    
-        }
-    });
-
-     // Scroll To Top 
+    // Scroll To Top 
     var scrollTop = $(".scrollToTop");
     $(window).on('scroll', function () {
         if ($(this).scrollTop() < 500) {
@@ -115,5 +83,10 @@
     $('.btn').on('animationend webkitAnimationEnd oanimationend MSAnimationEnd', '.btn-ripple', function(){
         $(this).remove();
     });
+
+    // chate button
+	$(document).on('click','.media-btn, .media-close',function(){
+        $(".social-media").toggleClass("open");
+	});
 
 })(jQuery);
